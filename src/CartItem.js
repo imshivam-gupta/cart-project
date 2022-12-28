@@ -1,43 +1,18 @@
 import React from 'react';
 class CartItem extends React.Component{
-    constructor(){
-        super();
-        this.state={
-            price:999,
-            title:'Phone',
-            qty: 1,
-            img:' '
-        }
-        this.testing();
+    
+    increaseQty = () =>{
+        this.setState({qty:this.state.qty+1});
     }
-    
-        testing (){
-            const promise = new Promise((resolve,reject)=>{
-                setTimeout(()=>{
-                    resolve('done');
-                },5000);
-            })
-
-            promise.then(()=>{
-                this.setState({qty:100});
-                console.log('this.state',this.state);
-            });
-        }
-    
-
-        increaseQty = () =>{
-
-            // this.setState({qty:this.state.qty+1});
-        }
 
     decreaseQty = () =>{
         const {qty}=this.state;
-        if(qty==0) return;
+        if(qty===0) return;
         this.setState({qty:this.state.qty-1});
     }
     
     render(){
-        const {price,title,qty,img} = this.state;
+        const {price,title,qty,img} = this.props.product;
         return(
             <div className='cart-item'>
                 <div className='left-block'>
